@@ -1,66 +1,35 @@
-import org.junit.jupiter.api.Test;
-import java.util.Arrays;
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.*;
 
-public class TrainConsistManagementAppTest {
+public class TrainConsistManagementApp {
 
-    @Test
-    void testSort_BasicAlphabeticalSorting() {
-        String[] arr = {"Sleeper","AC Chair","First Class","General","Luxury"};
+    public static void main(String[] args) {
 
-        Arrays.sort(arr);
+        System.out.println("==============================================");
+        System.out.println(" UC18 - Linear Search (Bogie ID) ");
+        System.out.println("==============================================\n");
 
-        assertArrayEquals(
-                new String[]{"AC Chair","First Class","General","Luxury","Sleeper"},
-                arr
-        );
-    }
+        // Bogie IDs
+        String[] bogieIds = {"BG101", "BG205", "BG309", "BG412", "BG550"};
 
-    @Test
-    void testSort_UnsortedInput() {
-        String[] arr = {"Luxury","General","Sleeper","AC Chair"};
+        String searchKey = "BG309"; // change to test
 
-        Arrays.sort(arr);
+        boolean found = false;
 
-        assertArrayEquals(
-                new String[]{"AC Chair","General","Luxury","Sleeper"},
-                arr
-        );
-    }
+        // 🔥 Linear Search
+        for (String id : bogieIds) {
+            if (id.equals(searchKey)) {
+                found = true;
+                break; // stop early
+            }
+        }
 
-    @Test
-    void testSort_AlreadySortedArray() {
-        String[] arr = {"AC Chair","First Class","General"};
+        // Output
+        if (found) {
+            System.out.println("Bogie Found: " + searchKey);
+        } else {
+            System.out.println("Bogie Not Found: " + searchKey);
+        }
 
-        Arrays.sort(arr);
-
-        assertArrayEquals(
-                new String[]{"AC Chair","First Class","General"},
-                arr
-        );
-    }
-
-    @Test
-    void testSort_DuplicateBogieNames() {
-        String[] arr = {"Sleeper","AC Chair","Sleeper","General"};
-
-        Arrays.sort(arr);
-
-        assertArrayEquals(
-                new String[]{"AC Chair","General","Sleeper","Sleeper"},
-                arr
-        );
-    }
-
-    @Test
-    void testSort_SingleElementArray() {
-        String[] arr = {"Sleeper"};
-
-        Arrays.sort(arr);
-
-        assertArrayEquals(
-                new String[]{"Sleeper"},
-                arr
-        );
+        System.out.println("\nUC18 search completed...");
     }
 }
